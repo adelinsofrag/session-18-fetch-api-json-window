@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BOM, Fetch API, and Window Object Example</title>
+</head>
+<body>
+  <h1>Example: BOM, Fetch API, and Window Object</h1>
+
+  <p id="message">This is an example using BOM, Fetch API, and Window object.</p>
+
+  <button id="fetchDataButton">Fetch Data</button>
+
+  <script>
+    // BOM (Browser Object Model) example: Window object
+    const windowHeight = window.innerHeight;
+    const windowWidth = window.innerWidth;
+
+    // Update the message with the window dimensions
+    document.getElementById("message").innerHTML += `<br>Window Dimensions: ${windowWidth}x${windowHeight}`;
+
+    // Fetch API example: Fetch data from an API
+    const fetchDataButton = document.getElementById("fetchDataButton");
+
+    fetchDataButton.addEventListener("click", () => {
+      // Use the Fetch API to make an HTTP GET request
+      fetch("https://jsonplaceholder.typicode.com/posts/1")
+        .then(response => response.json())
+        .then(data => {
+          // Update the message with fetched data
+          document.getElementById("message").innerHTML += `<br>Fetched Data: ${data.title}`;
+        })
+        .catch(error => {
+          console.error("Fetch Error:", error);
+        });
+    });
+  </script>
+</body>
+</html>
